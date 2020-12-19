@@ -1,0 +1,5 @@
+## How to rename a file/folder
+$ mv old_name new_name
+
+## How to move a file/folder
+$ mv old_destination new_destination

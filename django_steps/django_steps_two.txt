@@ -1,0 +1,89 @@
+// create necessary tables in database
+python3 manage.py migrate
+
+
+// create models in polls/models.py file
+from django.db import models
+
+class Question(models.Model):
+    question_text = models.CharField(max_length=200)
+    pub_date = models.DateTimeField('date published')
+    def __str__(self):
+        return self.question_text
+
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+    def __str__(self):
+        return self.choice_text
+
+// Activating models - update mysite/settings.py file
+INSTALLED_APPS = [
+    'polls.apps.PollsConfig',  # add this
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+
+
+// if polls/models.py file is changed
+python3 manage.py makemigrations polls  +
+python3 manage.py migrate
+
+
+
+// PLAYING WITH THE API
+python3 manage.py shell
+>>>from polls.models import Question, Choice
+# get all the objects #############
+>>> Question.objects.all()
+# create a new question #############
+# first import timezone #############
+>>> from django.utils import timezone
+>>> q = Question(question_text="what's new?", pub_date=timezone.now())
+# save the object in the database #############
+>>> q.save()
+# get object attributes #############
+>>> q.id
+>>> q.question_text
+>>> q.pub_date
+# filter and get the object #############
+>>> Question.objects.all()
+>>> Question.objects.filter(id=1)
+>>> Question.objects.filter(question_text__startswith='What')
+>>> from django.utils import timezone
+>>> current_year = timezone.now().year
+>>> Question.objects.get(pub_date__year=current_year)
+>>> Question.objects.get(id=1)
+# lookup by primary key(pk) ###########
+>>> Question.objects.get(pk=1)
+# display any choices from the related object #########
+>>> q = Question.objects.get(pk=1)
+>>> q.choice_set.all()
+# create choices ############
+>>> q.choice_set.create(choice_text='not much', votes=0)
+>>> q.choice_set.create(choice_text='the sky', votes=0)
+>>> c = q.choice_set.get(choice_text='not much')
+# modify choice
+>>> c.choice_text = 'just hanging'
+>>> c.save()
+>>> q.choice_set.all()
+# delete choice
+>>> c.delete()
+
+
+
+
+// creating a admin user
+python3 manage.py createsuperuser
+
+
+// make the poll app editable in the admin - polls/admin.py
+from django.contrib import admin
+from .models import Question
+
+admin.site.register(Question)
