@@ -1,5 +1,26 @@
+## Check current location in terminal
+$ pwd
+
+## list files inside directory
+$ ls
+$ ls -la
+
+## make directory
+$ mkdir name
+
+## remove directory or files 
+$ rmdir name < this only deletes empty directories
+$ rm name < this deletes directory and files inside the directory
+$ rm -rf name < force delete
+
+## create new file 
+$ touch name.txt
+
+## copy files/directories
+$ cp current_location new_location
+
 ## How to rename a file/folder
 $ mv old_name new_name
 
 ## How to move a file/folder
-$ mv old_destination new_destination
+$ mv current_location new_destination
