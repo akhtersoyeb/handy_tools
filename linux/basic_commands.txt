@@ -24,3 +24,11 @@ $ mv old_name new_name
 
 ## How to move a file/folder
 $ mv current_location new_destination
+
+## Make a file executable
+$ chmod +x test.xxx
+
+## Run a executable file
+$ ./test.xxx
+
+

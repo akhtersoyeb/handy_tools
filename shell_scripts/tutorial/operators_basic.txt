@@ -1,0 +1,53 @@
+<-- example 1 -->
+#!/bin/sh
+val=`expr 2 + 2`
+echo "Total value : $val"
+
+<-- ARITHMATIC OPERATOR -->
+<-- assume variable a=10 and b=20 -->
++ (Addition)        || Adds values on either side of the operator                               || `expr $a + $b` will give 30
+- (Subtraction) 	|| Subtracts right hand operand from left hand operand 	                    || `expr $a - $b` will give -10
+* (Multiplication) 	|| Multiplies values on either side of the operator 	                    || `expr $a \* $b` will give 200
+/ (Division) 	    || Divides left hand operand by right hand operand	                        || `expr $b / $a` will give 2
+% (Modulus) 	    || Divides left hand operand by right hand operand and returns remainder 	|| `expr $b % $a` will give 0
+= (Assignment) 	    || Assigns right operand in left operand 	                                ||  a = $b would assign value of b into a
+== (Equality) 	    || Compares two numbers, if both are same then returns true. 	            ||  [ $a == $b ] would return false.
+!= (Not Equality) 	|| Compares two numbers, if both are different then returns true. 	        ||  [ $a != $b ] would return true.
+
+<-- RELATIONAL OPERATOR -->
+<-- assume variable a=10 and b=20 -->
+-eq || equal to         || [ $a -eq $b ] is not true.
+-ne || not equal to     || [ $a -ne $b ] is true.
+-gt || greater than     || [ $a -gt $b ] is not true.
+-lt || less than        || [ $a -lt $b ] is true.
+-ge || greater or equal || [ $a -ge $b ] is not true.
+-le || less or equal    || [ $a -le $b ] is true.
+
+<-- BOOLEAN OPERATOR -->
+<-- assume variable a=10 and b=20 -->
+!   || inverts  || [ ! false ] is true.
+-o  || OR       || [ $a -lt 20 -o $b -gt 100 ] is true.
+-a  || AND      || [ $a -lt 20 -a $b -gt 100 ] is false. 
+
+<-- STRING OPERATOR --> 
+<-- Assume variable a holds "abc" and variable b holds "efg" -->
+= 	    || Checks if the value of two operands are equal or not; if yes, then the condition becomes true. 	                || [ $a = $b ] is not true.
+!= 	    || Checks if the value of two operands are equal or not; if values are not equal then the condition becomes true. 	|| [ $a != $b ] is true.
+-z 	    || Checks if the given string operand size is zero; if it is zero length, then it returns true. 	                || [ -z $a ] is not true.
+-n 	    || Checks if the given string operand size is non-zero; if it is nonzero length, then it returns true. 	            || [ -n $a ] is not false.
+str 	|| Checks if str is not the empty string; if it is empty, then it returns false. 	                                || [ $a ] is not false.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+$0 --> the filename of the current script (useful)
+$n --> argument passed in the n-th number (useful)
+$# --> the number of arguments supplied to a script (useful)
+$* --> list of all the arguments passed (useful)
+$@ --> same as $*
+$? --> the exit status of the last command executed
+$$ --> process number of the current shell 
+
+
+<-- example one --> 
+#!/bin/bash 
+echo "file name : $0"
+echo "1st parameter : $1"
+echo "2nd parameter : $2"
+echo "quoted values : $*"
+echo "quoted values : $@"
+echo "total number of parameters : $#"
+
+run : ./test.sh Zara Ali 
+
+output :
+    file name : ./test.sh
+    1st parameter : Zara
+    2nd parameter : Ali
+    quoted values: Zara Ali
+    quoted values: Zara Ali
+    total number of parameters : 2
+
+<-- example two --> 
+#!/bin/sh
+for TOKEN in $*
+do
+   echo $TOKEN
+done
+
+run : ./test.sh Zara Ali 10 Years Old
+
+output : 
+    Zara
+    Ali
+    10
+    Years
+    Old

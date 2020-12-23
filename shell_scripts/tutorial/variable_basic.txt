@@ -1,0 +1,31 @@
+<-- print something -->
+echo "what is your name?"
+
+<-- define variable --> // syntax : variable_name=variable_value
+name="soyeb akhter"
+echo $name 
+
+<-- access variable value --> // syntax : echo $variable_name
+name="soyeb"
+age=23
+echo $name
+echo $age 
+echo "hi $name, your age is $age"
+# changing variable value is easy
+name="akhter"
+echo $name 
+
+<-- read only (constant) variable -->
+name="soyeb"
+readonly name
+name="akhter"
+
+: output - /bin/sh: name: This variable is read only.
+
+<-- unset (delete) variable --> 
+NAME="Zara Ali"
+unset NAME
+echo $NAME
+
+: output - (this will print nothing)
+

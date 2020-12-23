@@ -1,0 +1,12 @@
+<-- make a shell script & make it executable & run it -->
+$ touch test.sh
+$ chmod +x test.sh
+$ ./test.sh 
+
+<-- first line of all shell script -->
+1. #!/bin/bash
+
+<-- use of comments -->
+1. #!/bin/bash
+2. # Author : Sk Soyeb Akhter
+3. # this is comment 

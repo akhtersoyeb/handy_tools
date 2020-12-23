@@ -1,0 +1,44 @@
+<-- define array --> syntax : array_name[index]=value
+#!/bin/sh
+NAME[0]="Zara"
+NAME[1]="Qadir"
+NAME[2]="Mahnaz"
+NAME[3]="Ayan"
+NAME[4]="Daisy"
+
+
+<-- define array (bash shell) --> array_name=(value1 value2 ... valuen)
+#!/bin/sh 
+mix_array=("soyeb" "akhter" 23 "lal" "bihar")
+echo ${name[2]}
+echo ${name[*]}
+
+output : 
+    23
+    soyeb akhter 23 lal bihar
+
+
+<-- accessing array values --> syntax : ${array_name[index]}
+#!/bin/sh
+NAME[0]="Zara"
+NAME[1]="Qadir"
+NAME[2]="Mahnaz"
+NAME[3]="Ayan"
+NAME[4]="Daisy"
+echo "First Index: ${NAME[0]}"
+echo "Second Index: ${NAME[1]}"
+
+
+<-- access all the items in an array --> syntax : ${array_name[*]}
+#!/bin/sh
+NAME[0]="Zara"
+NAME[1]="Qadir"
+NAME[2]="Mahnaz"
+NAME[3]="Ayan"
+NAME[4]="Daisy"
+echo "First Method: ${NAME[*]}"
+echo "Second Method: ${NAME[@]}"
+
+output : 
+    First Method: Zara Qadir Mahnaz Ayan Daisy
+    Second Method: Zara Qadir Mahnaz Ayan Daisy

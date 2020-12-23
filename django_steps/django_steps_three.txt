@@ -1,25 +1,56 @@
-// Writing more views - polls/views.py
-def detail(request, question_id):
-    return HttpResponse("you're looking at question %s" % question_id)
-
-def results(request, question_id):
-    response = "you're looking at the results of question %s"
-    return HttpResponse(response % question_id)
-def vote(request, question_id):
-    return HttpResponse("you're voting on question %s" % question_id)
-
-
-// Add views to polls/urls.py
+// polls/urls.py
 from django.urls import path
-from . import views
+from . import views 
 
+app_name = 'polls'
 urlpatterns = [
-    # => /
     path('', views.index, name='index'),
-    # => /5
     path('<int:question_id>/', views.detail, name='detail'),
-    # => /5/results
     path('<int:question_id>/results/', views.results, name='results'),
-    # => /5/vote
     path('<int:question_id>/vote/', views.vote, name='vote'),
 ]
+
+
+
+// polls/views.py
+from django.shortcuts import render, get_object_or_404
+from .models import Question 
+
+def index(request):
+    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    context = {
+        'latest_question_list': latest_question_list
+    }
+    return render(request, 'polls/index.html', context)
+
+def detail(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    context = {
+        'question': question
+    }
+    return render(request, 'polls/detail.html', context)
+
+
+
+
+// polls/templates/polls/index.html 
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:detail' question_id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+
+
+
+// polls/templates/polls/detail.html 
+<h1>{{ question.question_text }}</h1>
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }}</li>
+{% endfor %}
+</ul>
