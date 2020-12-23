@@ -4,3 +4,5 @@
 name=("soyeb" "akhter" 23 "lal" "bihar")
 echo ${name[2]}
 echo ${name[*]}
+
+# comment
