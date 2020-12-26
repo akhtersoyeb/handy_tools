@@ -1,8 +1,16 @@
 #!/bin/bash
 # Author : Soyeb Akhter
 # Script follows here:
-name=("soyeb" "akhter" 23 "lal" "bihar")
-echo ${name[2]}
-echo ${name[*]}
 
-# comment
+
+a=10
+b=20
+if [ $a == $b ]
+then 
+    echo "a is equal to b"
+fi 
+
+if [ $a != $b ]
+then 
+    echo "a is not equal to b"
+fi 
