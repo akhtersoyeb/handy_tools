@@ -7,7 +7,8 @@ $ ls -la
 
 ## make directory
 $ mkdir name
-
+$ mkdir -p a/b  < this will make a dir and then b dir inside a dir
+$ mkdir -p x/{y,z} < this will make x dir and y,z dir inside x dir
 ## remove directory or files 
 $ rmdir name < this only deletes empty directories
 $ rm name < this deletes directory and files inside the directory
