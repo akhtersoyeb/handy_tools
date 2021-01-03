@@ -1,0 +1,15 @@
+<-- install pipenv -->
+$ pip3 install pipenv 
+
+<-- activate pipenv -->
+$ pipenv shell
+
+<-- exit out from pipenv -->
+$ exit 
+
+<-- install packages with pipenv -->
+$ pipenv install django
+$ pipenv install djangorestframework 
+
+<-- uninstall packages -->
+$ pipenv uninstall django 
